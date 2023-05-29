@@ -28,4 +28,31 @@ class TodosTest {
         Task[] actual = todos.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void testWhenFewTasks() {
+        SimpleTask simpleTask = new SimpleTask(5, "купить Хлеб");
+
+        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        Epic epic = new Epic(55, subtasks);
+
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        Todos todos = new Todos();
+
+        todos.add(simpleTask);
+        todos.add(epic);
+        todos.add(meeting);
+
+        String query;
+        Task[] actual = todos.search( query: "Хлеб")
+        Task[] expected = { simpleTask, epic};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
