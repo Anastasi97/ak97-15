@@ -16,7 +16,7 @@ class TestEpic {
     }
 
     @Test
-    public void testMatches() {
+    public void testMatches2() {
         String[] subtasks = {"Implement login functionality", "Implement registration functionality", "Implement password reset functionality"};
         Epic epic = new Epic(1, subtasks);
         assertFalse(epic.matches("logout"));
